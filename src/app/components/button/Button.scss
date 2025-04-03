@@ -1,0 +1,18 @@
+@mixin button{
+    width: 140px;
+    height: 46px;
+    border-radius: 8px;
+}
+
+.button-1{
+    @include button;
+    color: #fff;
+    background-color: #8A33FD;
+}
+
+.button-2{
+    @include button;
+    color: #8A33FD;
+    background-color: #fff;
+    border: 1px solid #3C4242;
+}
