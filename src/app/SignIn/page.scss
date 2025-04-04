@@ -1,0 +1,113 @@
+.signIn{
+    width: 100%;
+    height: calc(100vh - 111px);
+    display: flex;
+    align-items: center;
+    &__illustration{
+        height: 100%;
+        width: 700px;
+        & img{
+            width: 100%;
+            height: 100%;
+        }
+    }
+    &__content{
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        height: 100%;
+        &-tittle{
+            margin-bottom: 20px;
+            & p{
+                color: #666666CC;
+                font-size: 16px;
+                margin: 0;
+            }
+        }
+        &-holder{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            h1{
+                font-size: 34px;
+                color: #333;
+            }
+            .line{
+                width: 100%;
+                background-color: rgba(102, 102, 102, 0.25);
+                height: 2px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                div{
+                    width: 70px;
+                    background-color: #fff;
+                    font-size: 18px;
+                    color: #666666;
+                    text-align: center;
+                }
+            }
+        }
+        &-buttons{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 560px;
+                height: 58px;
+                border-radius: 8px;
+                border: 1px solid #3C4242;
+                font-size: 22px;
+                color: #8A33FD;
+            }
+        }
+        &-form{
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            .input-group{
+                display: flex;
+                flex-direction: column;
+                gap: 12px;
+                p{
+                    font-size: 18px;
+                    color: #3C4242;
+                    display: flex;
+                    justify-content: space-between;
+                    span{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        gap: 14px;
+                    }
+                }
+                input{
+                    width: 560px;
+                    height: 58px;
+                    border-radius: 8px;
+                    border: 1px solid #3C4242;
+                    padding: 0 0 0 10px;
+                    font-size: 18px;
+                }
+                div{
+                    width: 100%;
+                    display: flex;
+                    justify-content: flex-end;
+            
+                }
+            }
+        }
+        &-button{
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            
+        }
+    }
+}
