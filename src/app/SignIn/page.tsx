@@ -1,13 +1,27 @@
+'use client';
 import './page.scss';
 import Button from '../components/button/Button';
 import Image from 'next/image';
 import backgroundImage from '../../../public/background/SignInBack.png';
 import hideIcon from '../../../public/icons/hide.png';
+import eye from '../../../public/icons/eye.svg';
 import GoogleIcon from '../../../public/icons/google.png';
 import FacebookIcon from '../../../public/icons/facebook.png';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const SignIn: React.FC = () => {
+
+    const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+    
+    const togglePassword = () => {
+        const input = document.getElementById('signInPassword') as HTMLInputElement | null;
+        if (input) {
+            input.type = isPasswordVisible ? 'password' : 'text';
+            setIsPasswordVisible(!isPasswordVisible);
+        }
+    };
+
     return(
           <div className='signIn'>
                 <div className="signIn__illustration">
@@ -39,18 +53,17 @@ const SignIn: React.FC = () => {
                         </div>
                         <div className="input-group">
                             <p>Password
-                                 <span>
-                                    <Image src={hideIcon} alt='hide icon' style={{ width: "18.19px", height: "16px"}} />
-                                    Hide
+                                <span onClick={togglePassword} style={{ cursor: 'pointer' }}>
+                                    <Image src={isPasswordVisible ? eye  : hideIcon} alt='toggle password visibility' style={{ width: "20px", height: "20px" }} />
+                                    {isPasswordVisible ? 'Hide' : 'Show'}
                                 </span>
                             </p>
-                            <input type="text" />
-                            Use 8 or more characters with a mix of letters, numbers & symbols
+                            <input type={isPasswordVisible ? 'text' : 'password'} id='signInPassword' />
                         </div>
-                        <div className="signIn__content-button">
+                         <div className="signIn__content-button">
                             <Button text={'Sign Up'} buttonStyle={1} />
-                            <p>Already have an  account? <Link href={'/LogIn'}>Log In</Link></p>
-                        </div>
+                             <p>Already have account <Link href={'/LogIn'}>Log In</Link></p>
+                          </div>
                     </form>
                     </div>
                 </div>

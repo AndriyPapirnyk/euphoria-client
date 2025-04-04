@@ -44,6 +44,9 @@
             flex-direction: column;
             gap: 20px;
             button{
+                display: flex;
+                align-items: center;
+                justify-content: center;
                 width: 560px;
                 height: 58px;
                 border-radius: 8px;
