@@ -26,7 +26,7 @@ const LogIn: React.FC = () => {
   return (
     <div className='login'>
         <div className="login__illustration">
-            <Image src={backgroundImage} alt="Login Illustration" style={{ height: "100%"}}/>
+            <Image src={backgroundImage} alt="Login Illustration" style={{ height: "100%", width: "auto"}}/>
         </div>
         <div className="login__content">
             <div className="login__content-holder">
@@ -59,12 +59,12 @@ const LogIn: React.FC = () => {
                   </p>
                   <input type={isPasswordVisible ? 'text' : 'password'} id='signInPassword' />                    
                   <div>
-                    <a href="">Forget your password</a>
+                    <Link href={'/reset-password'}>Forget your password</Link>
                   </div>
                 </div>
                 <div className="login__content-button">
                     <Button text={'Sign In'} buttonStyle={1} />
-                    <p>Don't have an account? <Link href={'/SignIn'}>Sign Up</Link></p>
+                    <p>Don't have an account? <Link href={'/signIn'}>Sign Up</Link></p>
                 </div>
             </form>
             </div>

@@ -25,7 +25,7 @@ const SignIn: React.FC = () => {
     return(
           <div className='signIn'>
                 <div className="signIn__illustration">
-                    <Image src={backgroundImage} alt="Login Illustration" />
+                    <Image src={backgroundImage} alt="Login Illustration" style={{ height: "100%", width: "auto"}} />
                 </div>
                 <div className="signIn__content">   
                   <div className="signIn__content-holder">
@@ -62,7 +62,7 @@ const SignIn: React.FC = () => {
                         </div>
                          <div className="signIn__content-button">
                             <Button text={'Sign Up'} buttonStyle={1} />
-                             <p>Already have account <Link href={'/LogIn'}>Log In</Link></p>
+                             <p>Already have account <Link href={'/login'}>Log In</Link></p>
                           </div>
                     </form>
                     </div>

@@ -26,10 +26,10 @@ export default function Header() {
             <Image src={logo} alt="Logo" width={130} height={40}/>
         </div>
         <nav className="header__nav">
-            <Link href={'/LogIn'}>
+            <Link href={'/login'}>
               <Button text={'Login'} buttonStyle={pathname == '/LogIn' ? 1 : 2} />
             </Link>
-            <Link href={'/SignIn'}>
+            <Link href={'/signIn'}>
               <Button text={'Sign Up'} buttonStyle={pathname == '/SignIn' ? 1 : 2} />
             </Link>
         </nav>
