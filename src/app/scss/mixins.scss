@@ -1,0 +1,81 @@
+
+@mixin text($color, $fontSize, $fontWeight) {
+  color: $color;
+  font-size: $fontSize;
+  font-weight: $fontWeight;
+}
+
+@mixin block($height) {
+  width: 100%;
+  height: $height;
+  display: flex;
+  justify-content: center;
+  &__container{
+    width: 1250px;
+    height: 100%;
+    // border: 1px solid #000;
+    display: flex;
+  }
+}
+
+@mixin center(){
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin row($height){
+  width: 100%;
+  height: $height;
+  display: flex;
+  align-items: center;
+}
+
+@mixin container(){
+  width: 100%;
+  height: 86vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+@mixin btn($borderColor){
+  width: 120px;
+  height: 40px;
+  background-color: inherit;
+  @include center();
+  border: 1px solid $borderColor;
+  border-radius: 10px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+
+@mixin _1170 {
+  @media (max-width: 1170px){
+    @content;
+  }
+}
+@mixin _979 {
+  @media (max-width: 979px){
+    @content;
+  }
+}
+@mixin _768 {
+  @media (max-width: 768px){
+    @content;
+  }
+}
+@mixin _600 {
+  @media (max-width: 600px){
+    @content;
+  }
+}
+@mixin _480 {
+  @media (max-width: 480px){
+    @content;
+  }
+}
+@mixin _350{
+  @media (max-width: 350px){
+    @content;
+  }
+}
