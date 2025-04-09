@@ -1,7 +1,7 @@
 "use client"
 import "../login/page.scss"
 import Image from 'next/image'
-import backgroundImage from '../../../public/background/loginBackground.png'
+import backgroundImage from '../../../public/background/creatingBackground.png'
 import hideIcon from '../../../public/icons/hide.png'
 import eye from '../../../public/icons/eye.svg';
 import Button from '../components/button/Button'
