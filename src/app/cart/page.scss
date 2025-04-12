@@ -1,0 +1,152 @@
+@use '../scss/mixins.scss';
+
+.cart{
+    @include mixins.block(auto);
+    border: 1px solid #000;
+    &__container{
+        flex-direction: column;
+    }
+    &__top{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 50px 0;
+        h1{
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            @include mixins.text(#3C4242, 22px, 400);
+            a{
+                text-decoration: none;
+                &:nth-child(1){
+                    color: #807D7E;
+                }
+            }
+        }
+        p{
+            color: #807D7E;
+            a{
+                color: #8A33FD;
+                text-decoration: none;
+            }
+        }
+    }
+    &__list{
+        padding: 0 0 95px 0;
+    }
+    &__info{
+        left: 0;
+        width: 100%;
+        position: absolute;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #3C4242;
+        height: 76px;
+        padding: 0 100px;
+        h1{
+            @include mixins.text(#fff, 22px, 400);
+        }
+        div{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 120px;
+        }
+    }
+    &__info-holder{
+        height: 76px;
+    }
+    &__bottom{
+        left: 0;
+        width: 100%;
+        position: absolute;
+        background-color: #F6F6F6;
+        padding: 0 100px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 368px;
+        &-left{
+            display: flex;
+            flex-direction: column;
+            gap: 37px;
+            h1{
+                @include mixins.text(#3C4242, 26px, 500);
+            }
+            p{
+                color: #807D7E;
+            }
+            .input-group{
+                display: flex;
+                input{
+                    width: 215px;
+                    border: 1px solid #BEBCBD;
+                    border-radius: 12px 0 0 12px;
+                    height: 43px;
+                }
+                button{
+                    width: 160px;
+                    border: 1px solid #BEBCBD;
+                    border-left: none;
+                    height: 43px;
+                    border-radius: 0 12px 12px 0;
+                    background-color: #8A33FD;
+                    color: #fff;
+                    font-weight: 500;
+                }
+            }
+            button{
+                width: 230px;
+                border: 1px solid #BEBCBD;
+                height: 43px;
+                border-radius: 12px;
+                font-weight: 500;
+            }
+        }
+        &-right{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background-color: #F3F3F3;
+            padding: 48px 120px;
+            width: 465px;
+            height: 100%;
+            h1, span{
+                @include mixins.text(#3C4242, 22px, 500);
+            }
+            h2{
+                @include mixins.text(#3C4242, 22px, 600);
+            }
+            button{
+                width: 230px;
+                border: 1px solid #BEBCBD;
+                height: 43px;
+                border-radius: 12px;
+                font-weight: 500;
+            }
+            .line{
+                width: 100%;
+                height: 1px;
+                background-color: #BEBCBD;
+            }
+            .text-holder{
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+    &__bottom-holder{
+        height: 368px;
+    }
+}
+
+
+
+
+// @mixin text($color, $fontSize, $fontWeight) {
+//     color: $color;
+//     font-size: $fontSize;
+//     font-weight: $fontWeight;
+//   }
