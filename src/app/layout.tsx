@@ -1,7 +1,10 @@
+
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Header from "./components/header/Header";
 import AuthProvider from "./components/AuthProvider/AuthProvider";
+import { ReduxProvider } from "./components/reduxProvider/reduxProvider";
+import { store } from "@/store";
 import "./reset.css";
 
 const montserrat = Montserrat({
@@ -22,8 +25,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={montserrat.variable}>
         <AuthProvider>
-          <Header />
-          <div className="my-container">{children}</div>
+          <ReduxProvider >
+            <Header />
+            <div className="my-container">{children}</div>
+          </ReduxProvider>
         </AuthProvider>
       </body>
     </html>

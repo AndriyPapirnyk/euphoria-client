@@ -1,8 +1,9 @@
 import NextAuth from "next-auth"
 import GoogleProvider from "next-auth/providers/google";
+import FacebookProvider from "next-auth/providers/facebook";  
 import CredentialsProvider from "next-auth/providers/credentials";
-import connect  from "../../../../Utils/db";
-import User from '../../../../Models/User';
+import connect  from "../../../../utils/db";
+import User from '../../../../models/User';
 import bcrypt from 'bcryptjs'
 
 
@@ -12,6 +13,15 @@ const handler =  NextAuth({
             clientId: process.env.CLIENTID,
             clientSecret: process.env.CLIENTSECRET,
         }),
+        FacebookProvider({
+            clientId: process.env.FACEBOOK_CLIENT_ID,
+            clientSecret:  process.env.FACEBOOK_CLIENT_SECRET,
+            authorization: {
+              params: {
+                scope: "email public_profile",
+              },
+            },
+          }),
         CredentialsProvider ({
             id: 'credentials',
             name: 'Credentials',

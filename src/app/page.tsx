@@ -3,7 +3,14 @@ import './page.scss';
 import Image from "next/image";
 import sliderNext from "../../public/icons/sliderNext.png";
 import sliderPrev from "../../public/icons/sliderPrev.png";
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { signOut } from 'next-auth/react';
+import { useAppDispatch } from '@/store/hooks';
+import { useAppSelector } from '@/store/hooks';
+import { useSession } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import  {fetchUserByEmail}  from '@/store/features/user/userThunks';
+import Cookies from 'js-cookie';
 
 interface SliderContent {
   subtitle: string;
@@ -13,9 +20,6 @@ interface SliderContent {
 }
 
 const Home: React.FC = () => {
-
-  const pagination =  useRef<HTMLDivElement>(null);
-  const [sliderPage, setSliderPage] = useState<number>(0);
 
   const slider: SliderContent[] = [{
     subtitle: 'T-shirt / Tops',
@@ -28,6 +32,31 @@ const Home: React.FC = () => {
     subtitle: 'Sweatshirt / Hoodies',
     buttonText: 'Shop Now',
   }]
+
+  const session = useSession();
+  const router = useRouter();
+  const dispatch = useAppDispatch();
+  const { data, loading, error }  = useAppSelector((state) => state.user);
+
+  const pagination =  useRef<HTMLDivElement>(null);
+  const [sliderPage, setSliderPage] = useState<number>(0);
+
+  const clearUserSession = () => {
+    Cookies.remove('user');
+  };
+
+  useEffect(()=>{
+    
+    if(session.status === 'unauthenticated'){
+      clearUserSession();
+      router.push('/login');
+    }else if(session.status === 'authenticated'){
+      dispatch(fetchUserByEmail(session.data?.user?.email ?? ''));
+    }
+
+  }, [session])
+
+
 
   const hadnlePaginationSliderPage = (e: React.MouseEvent<HTMLImageElement>) => {
     const target = e.target as HTMLDivElement;
@@ -48,7 +77,7 @@ const Home: React.FC = () => {
 
 
   return (
-    <div className='home'>
+    <div className='home' onClick={()=>{signOut()}}>
       <div className="home__slider" style={{backgroundImage: `url(/background/sliderPage${sliderPage+1}.jpg)`}} onClick={hadnlePaginationSliderPage}>
         <Image data-action='prev' src={sliderPrev} width={30} height={30} alt={'prev'}></Image>
         <div className="home__slider-container">

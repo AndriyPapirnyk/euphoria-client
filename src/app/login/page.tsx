@@ -7,6 +7,7 @@ import eye from '../../../public/icons/eye.svg';
 import Button from '../components/button/Button'
 import GoogleIcon from '../../../public/icons/google.png';
 import FacebookIcon from '../../../public/icons/facebook.png';
+import {signOut, signIn } from 'next-auth/react';
 import Link from 'next/link'
 import { useState } from 'react'
 
@@ -64,7 +65,7 @@ const LogIn: React.FC = () => {
                 </div>
                 <div className="login__content-button">
                     <Button text={'Sign In'} buttonStyle={1} />
-                    <p>Don't have an account? <Link href={'/signIn'}>Sign Up</Link></p>
+                    <p onClick={()=> signOut()}>Don't have an account? <Link href={'/signIn'}>Sign Up</Link></p>
                 </div>
             </form>
             </div>
