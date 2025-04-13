@@ -32,7 +32,7 @@ export default function Header() {
             <Link href={'/login'}>
               <Button text={'Login'} buttonStyle={pathname == '/login' ? 1 : 2} />
             </Link>
-            <Link href={'/signin'}>
+            <Link href={'/signIn'}>
               <Button text={'Sign Up'} buttonStyle={pathname == '/signin' ? 1 : 2} />
             </Link>
         </nav> : null}
