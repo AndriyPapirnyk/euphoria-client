@@ -29,12 +29,17 @@ const handler =  NextAuth({
                 await connect();
                 try {
                     const user = await User.findOne({ email: credentials.email });
-
+                    console.log(user)
+                    let isPasswordCorrect = ''
                     if (!user) {
                         throw new Error("User not found");
                     }
-
-                    const isPasswordCorrect = await bcrypt.compare(credentials.password, user.password);
+                    if (user?.type?.trim() === "local") {
+                        isPasswordCorrect = await bcrypt.compare(credentials.password, user.password || '');
+                      } else {
+                        throw new Error("User must login by social media");
+                      }
+                      
 
                     if (!isPasswordCorrect) {
                         throw new Error("Wrong password");

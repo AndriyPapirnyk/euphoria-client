@@ -1,14 +1,24 @@
 import mongoose from "mongoose";
 
-const connect  = async () => {
-    try{
-        mongoose.set("strictQuery", false);
+const connect = async () => {
+  try {
+    mongoose.set("strictQuery", false);
 
-        mongoose.connect(process.env.MONGO_URL);
-        console.log('connect')
-    }catch(err){
-        throw new Error("you have error")
+    if (mongoose.connection.readyState === 1) {
+      console.log("MongoDB already connected");
+      return;
     }
-}
 
-export default connect
+    if (!process.env.MONGO_URI) {
+      throw new Error("MONGO_URL not defined in env");
+    }
+
+    await mongoose.connect(process.env.MONGO_URI);
+    console.log("Connected to MongoDB");
+  } catch (err) {
+    console.error("MongoDB connection error:", err);
+    throw new Error("MongoDB connection failed");
+  }
+};
+
+export default connect;

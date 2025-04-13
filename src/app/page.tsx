@@ -46,10 +46,8 @@ const Home: React.FC = () => {
   };
 
   useEffect(()=>{
-    
     if(session.status === 'unauthenticated'){
       clearUserSession();
-      router.push('/login');
     }else if(session.status === 'authenticated'){
       dispatch(fetchUserByEmail(session.data?.user?.email ?? ''));
     }

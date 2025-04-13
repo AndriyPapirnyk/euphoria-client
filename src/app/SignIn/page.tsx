@@ -18,9 +18,13 @@ import Cookies from 'js-cookie';
 
 const SignIn: React.FC = () => {
 
+    const [username, setUsername] = useState<string>('')
+    const [useremail, setUserEmail] = useState<string>('')
+    const [password, setPassword] = useState<string>('')
     const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
     const session = useSession();
     const router = useRouter();
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
     const togglePassword = () => {
         const input = document.getElementById('signInPassword') as HTMLInputElement | null;
@@ -30,17 +34,13 @@ const SignIn: React.FC = () => {
         }
     };
 
-    const setUserSession = (user: any) => {
-        Cookies.set('user', JSON.stringify(user), { expires: 7, path: '' });
-    };
-
     const checkUserSession = () => {
         const user = Cookies.get('user');
         if (user) {
           return JSON.parse(user);
         }
         return null;
-      };
+    };
 
 
     useEffect(() => {
@@ -62,14 +62,26 @@ const SignIn: React.FC = () => {
        
       }, [router,session.data]);
 
+    const handleSubmit = async (e: React.FormEvent) => {
+      e.preventDefault()
+      const user: User = {
+        name: username,
+        email: useremail,
+        img: 'none',
+        password: password,
+        type: 'local'
+        }
+        createUser(user)
+    }
+
 
     const createUser = async (user: User) => {
         try{
-            await axios.post('http://localhost:8000/auth/signUp', user)
-            .then((response) => {
+            await axios.post(`${apiUrl}/auth/signUp`, user)
+            .then(async (response) => {
                 if(response.status === 201){
-                    router.push('/');
-                    setUserSession(true)
+                     await signOut({ redirect: false })
+                     router.push('/login');
                 }
             })
         }catch(error){
@@ -77,7 +89,10 @@ const SignIn: React.FC = () => {
                 if (error.response.status === 409) {
                   signOut({ redirect: false })
                   alert('User already exists');
-                } else {
+                }else if(error.response.status === 404){
+                    signOut({ redirect: false })
+                  }  else {
+                 alert( error.response.data.message[0])
                   console.log('Unexpected error:', error.response.data);
                 }
               } else {
@@ -109,11 +124,16 @@ const SignIn: React.FC = () => {
                     <div className="line">
                         <div>OR</div>
                     </div>
-                    <form action="POST" className="signIn__content-form">
+                    <form onSubmit={handleSubmit} action="POST" className="signIn__content-form">
                         <div className="input-group">
-                            <p>User name or email address 
+                            <p>User name 
                             </p>
-                            <input type="text"/>
+                            <input type="text" value={username}  onChange={(e) => setUsername(e.target.value)}/> 
+                        </div>
+                        <div className="input-group">
+                            <p> email address 
+                            </p>
+                            <input type="text" value={useremail}  onChange={(e) => setUserEmail(e.target.value)}/> 
                         </div>
                         <div className="input-group">
                             <p>Password
@@ -122,7 +142,7 @@ const SignIn: React.FC = () => {
                                     {isPasswordVisible ? 'Hide' : 'Show'}
                                 </span>
                             </p>
-                            <input type={isPasswordVisible ? 'text' : 'password'} id='signInPassword' />
+                            <input type={isPasswordVisible ? 'text' : 'password'} id='signInPassword' value={password} onChange={(e) => setPassword(e.target.value)}/>
                         </div>
                          <div className="signIn__content-button">
                             <Button text={'Sign Up'} buttonStyle={1} />
