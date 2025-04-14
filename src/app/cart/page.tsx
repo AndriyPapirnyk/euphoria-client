@@ -2,13 +2,14 @@ import "./page.scss"
 import Link from "next/link"
 import Image from "next/image"
 import arrow from "../../../public/icons/arrow_1.png"
+import CartItem from "../components/cartItem/CartItem"
 
 export default function page() {
   return (
     <div className="cart">
         <div className="cart__container">
             <div className="cart__top">
-                <h1><Link href={''}>Home</Link> <Image src={arrow} alt={'arrow icon'} style={{width: "7px", height: "14px"}} /> <Link href={'cart'}>Add To Cart</Link></h1>
+                <h1><Link href={'/'}>Home</Link> <Image src={arrow} alt={'arrow icon'} style={{width: "7px", height: "14px"}} /> <Link href={'cart'}>Add To Cart</Link></h1>
                 <p>Please fill in the fields below and click place order to complete your purchase! <br /> Already registered? <Link href={"login"}>Please login here</Link></p>
             </div>
             <div className="cart__info-holder">
@@ -19,11 +20,14 @@ export default function page() {
                     <h1>QUANTITY</h1>
                     <h1>SHIPPING</h1>
                     <h1>SUBTOTAL</h1>
+                    <h1>ACTION</h1>
                 </div>
             </div>
             </div>
             <div className="cart__list">
-                list
+                <CartItem />
+                <CartItem />
+                <CartItem />
             </div>
             <div className="cart__bottom-holder">
             <div className="cart__bottom">

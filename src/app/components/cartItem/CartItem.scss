@@ -1,0 +1,58 @@
+@use '../../scss/mixins.scss';
+
+.cartItem{
+    width: 100%;
+    height: 220px;
+    border-top: 1px solid #BEBCBD;
+    border-bottom: 1px solid #BEBCBD;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    &:first-child{
+        border-top: none;
+    }
+    &:last-child{
+        border-bottom: none;
+    }
+    &__info{
+        display: flex;
+        gap: 20px;
+        &-text{
+            h3{
+                @include mixins.text(#3C4242, 18px, 600);
+            }
+            p{
+                @include mixins.text(#807D7E, 14px, 400);
+            }
+        }
+    }
+    &__content{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 119px;
+        padding: 0 25px 0 0;
+        h1{
+            @include mixins.text(#3C4242, 18px, 600);
+        }
+        &-quantity{
+            width: 100px;
+            height: 36px;
+            background-color: #F6F6F6;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 23px;
+            img{
+                cursor: pointer;
+            }
+        }
+        h2{
+            @include mixins.text(#BEBCBD, 18px, 600);
+        }
+        button{
+
+        }
+    }
+}
