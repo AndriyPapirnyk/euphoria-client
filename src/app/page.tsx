@@ -11,6 +11,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import  {fetchUserByEmail}  from '@/store/features/user/userThunks';
 import Cookies from 'js-cookie';
+import Footer from './components/footer/Footer';
 
 interface SliderContent {
   subtitle: string;
@@ -100,6 +101,7 @@ const Home: React.FC = () => {
       <div className="home__container">
        
       </div>
+      <Footer />
     </div>
   )
 }

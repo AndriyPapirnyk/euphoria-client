@@ -1,0 +1,55 @@
+@use '../../scss/mixins.scss';
+
+
+.footer{
+    @include mixins.block(auto);
+    background-color: #3C4242;
+    color: #fff;
+    &__container{
+        padding: 75px 0 35px 0;
+        flex-direction: column;
+    }
+    &__col-list{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 0 80px;
+    }
+    &__col{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        h1{
+            @include mixins.text(#fff, 28px, 550);
+        }
+        ul{
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+    }
+    &__socials{
+        width: 100%;
+        display: flex;
+        gap: 10px;
+        padding: 0 80px;
+        margin: 85px 0;
+    }
+    &__categories{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px solid #BEBCBD;
+        border-bottom: 1px solid #BEBCBD;
+        padding: 25px 80px;
+        h1{
+            @include mixins.text(#fff, 28px, 550);
+        }
+    }
+    p{
+        margin: 35px 0 0 0;
+        text-align: center;
+        font-size: 18px;
+    }
+}

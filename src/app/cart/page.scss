@@ -2,7 +2,6 @@
 
 .cart{
     @include mixins.block(auto);
-    border: 1px solid #000;
     &__container{
         flex-direction: column;
     }

@@ -9,7 +9,8 @@
   width: 100%;
   height: $height;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   &__container{
     width: calc(100% - 200px);
     height: 100%;

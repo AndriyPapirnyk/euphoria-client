@@ -3,6 +3,7 @@ import Link from "next/link"
 import Image from "next/image"
 import arrow from "../../../public/icons/arrow_1.png"
 import CartItem from "../components/cartItem/CartItem"
+import Footer from "../components/footer/Footer"
 
 export default function page() {
   return (
@@ -62,8 +63,8 @@ export default function page() {
                 </div>
             </div>
             </div>
-            {/* footer */}
         </div>
+        <Footer />
     </div>
   )
 }
